@@ -1,24 +1,15 @@
 const Sequelize = require('sequelize');
-const envConfigs = require('../config/config');
 
-const env = process.env.NODE_ENV || 'development';
-const config = envConfigs[env];
-
-let sequelize;
-if (config.url) {
-  sequelize = new Sequelize(config.url, {
+let sequelize = new Sequelize(process.env.DEV_DATABASE_URL, {
     //otherwise it will display logs for queries it running behind
     logging: false,
     pool: {
-      max: 0,
-      min: 0,
-      acquire: 30000,
-      idle: 10000
+        max: 10,
+        min: 0,
+        acquire: 30000,
+        idle: 10000
     }
-  });
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
+});
 
 //testing if the connection is OK or not
 sequelize
@@ -29,6 +20,7 @@ sequelize
     .catch(err => {
         console.error('Unable to connect to the database:', err);
     });
+
 
 //drop table if already exists and create new one
 sequelize.sync()
