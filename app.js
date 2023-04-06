@@ -7,6 +7,7 @@ require('./db/config')
 const userRoutes = require("./routes/user.route");
 const productRoutes = require("./routes/product.route");
 const orderRoutes = require("./routes/order.route");
+// const queryRoutes = require("./routes/query.route");
 
 //associations
 const User = require('./models/user.model');
@@ -22,7 +23,6 @@ Order.belongsTo(User);
 
 
 const app = express();
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
 
@@ -30,6 +30,7 @@ app.use(express.json())
 app.use("/users", userRoutes);
 app.use("/products", productRoutes);
 app.use("/orders", orderRoutes);
+// app.use("/queries",queryRoutes);
 
 
 app.use((error, req, res, next) => {
