@@ -113,7 +113,7 @@ module.exports = {
                 limit: limit
             })
             if (products.length == 0) {
-                return res.status(404).json({ msg: "orders not found!" });
+                return res.status(404).json({ msg: "products not found!" });
             }
             res.status(200).json({ data: products });
         }
