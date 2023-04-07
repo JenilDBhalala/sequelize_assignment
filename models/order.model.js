@@ -50,8 +50,8 @@ const Order = sequelize.define(
             reference: {
                 model: 'users',
                 key: 'id',
-                onDelete: 'CASCADE'
-            }
+            },
+            onDelete: 'CASCADE'
         }
     },
     {

@@ -4,16 +4,16 @@ const queryController = require("../controllers/query.controller");
 
 const router = express.Router();
 
-router.get("/1", queryController.getUndeliveredOrders);
+router.get("/orders/undelivered", queryController.getUndeliveredOrders);
 
-router.get("/2", queryController.getFiveRecentOrders);
+router.get("/orders/recent", queryController.getFiveRecentOrders);
 
-router.get("/3", queryController.getFiveMostActiveUsers);
+router.get("/users/active", queryController.getFiveMostActiveUsers);
 
-router.get("/4", queryController.getInactiveUsers);
+router.get("/users/inactive", queryController.getInactiveUsers);
 
-router.get("/5", queryController.getUndeliveredOrders);
+router.get("/products/", queryController.getFiveMostPurchasedProducts);
 
-router.get("/6", queryController.getUndeliveredOrders);
+router.get("/orders/expensive", queryController.getMostOrLeastExpensiveOrder);
 
 module.exports = router;

@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 
 let sequelize = new Sequelize(process.env.DEV_DATABASE_URL, {
-    //otherwise it will display logs for queries it running behind
-    logging: false,
+    //logging true will display logs for queries it running behind
+    logging: true,
     pool: {
         max: 10,
         min: 0,

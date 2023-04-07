@@ -26,9 +26,9 @@ const OrderDetail = sequelize.define(
             allowNull: false,
             reference: {
                 model: 'products',
-                key: 'id',
-                onDelete: 'CASCADE'
+                key: 'id'
             },
+            onDelete: 'CASCADE',
             primaryKey: true
         },
         orderId: {
@@ -36,9 +36,9 @@ const OrderDetail = sequelize.define(
             allowNull: false,
             reference: {
                 model: 'orders',
-                key: 'id',
-                onDelete: 'CASCADE'
+                key: 'id'
             },
+            onDelete: 'CASCADE',
             primaryKey: true
         }
     },
