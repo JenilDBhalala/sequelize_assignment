@@ -26,11 +26,16 @@ module.exports = {
 
     getFiveRecentOrders: async (req, res, next) => {
         try {
+            const limit = parseInt(req.query.limit);
+            if (isNaN(limit) || limit <= 0) {
+                return res.status(400).json({ msg: "Invalid limit parameter" });
+            }
+
             const orders = await Order.findAll({
                 order: [
                     ['orderDate', 'DESC']
                 ],
-                limit: parseInt(req.query.limit)
+                limit: limit
             })
             if (orders.length == 0) {
                 return res.status(404).json({ msg: "orders not found!" });
@@ -48,6 +53,7 @@ module.exports = {
             if (isNaN(limit) || limit <= 0) {
                 return res.status(400).json({ msg: "Invalid limit parameter" });
             }
+            
             const users = await Order.findAll({
                 include: {
                     model: User,
