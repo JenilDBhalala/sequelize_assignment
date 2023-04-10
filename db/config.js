@@ -22,7 +22,6 @@ sequelize
     });
 
 
-//drop table if already exists and create new one
 sequelize.sync()
     .then(() => console.log('database synced'))
     .catch((err) => console.log(err.message))
